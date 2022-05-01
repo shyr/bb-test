@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.10'
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'java'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation 'net.bytebuddy:byte-buddy-gradle-plugin:1.12.9'
+}
+
+jar {
+    manifest {
+        attributes 'Premain-Class': 'com.magic.MagicKt'
+        attributes 'Can-Retransform-Classes': true
+//        attributes  'Title': 'My Application', 'Version': version, 'Main-Class': Magic
+    }
+}
